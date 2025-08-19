@@ -27,7 +27,7 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({
   const fetchReviews = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`/api/reviews/book/${bookId}`, {
+      const response = await fetch('https://onlinebookstore-backend-f4ejgsdudbghhkfz.australiaeast-01.azurewebsites.net/api/reviews/book/' + bookId, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -47,7 +47,7 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({
   const handleSubmitReview = async (reviewData: CreateReview) => {
     setIsLoading(true);
     try {
-      const response = await fetch('/api/reviews', {
+      const response = await fetch('https://onlinebookstore-backend-f4ejgsdudbghhkfz.australiaeast-01.azurewebsites.net/api/reviews', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({
     
     setIsLoading(true);
     try {
-      const response = await fetch(`/api/reviews/${editingReview.id}`, {
+      const response = await fetch('https://onlinebookstore-backend-f4ejgsdudbghhkfz.australiaeast-01.azurewebsites.net/api/reviews/' + editingReview.id, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -113,7 +113,7 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({
     if (!confirm('Are you sure you want to delete this review?')) return;
 
     try {
-      const response = await fetch(`/api/reviews/${reviewId}`, {
+      const response = await fetch('https://onlinebookstore-backend-f4ejgsdudbghhkfz.australiaeast-01.azurewebsites.net/api/reviews/' + reviewId, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
